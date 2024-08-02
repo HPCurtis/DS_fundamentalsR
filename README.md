@@ -1,0 +1,1 @@
+# Data science fundmentals with R and SQL/duckdb
