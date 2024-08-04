@@ -23,4 +23,4 @@ for (sheet_name in names(dfs)) {
 }
 
 # Commit and close the connection
-dbDisconnect(con
+dbDisconnect(con)
