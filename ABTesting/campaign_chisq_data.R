@@ -1,14 +1,3 @@
-install_if_missing <- function(package) {
-  if (!require(package, character.only = TRUE)) {
-    install.packages(package, dependencies = TRUE)
-  }
-}
-
-# Check and install required packages
-install_if_missing("readxl")
-install_if_missing("httr")
-install_if_missing("tidyverse")
-
 # Load the packages
 library(readxl)
 library(httr)
