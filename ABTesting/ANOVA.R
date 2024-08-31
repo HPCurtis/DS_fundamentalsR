@@ -1,11 +1,12 @@
+# Load requisite packages.
 library(easystats)
 library(tidyverse)
 
 # Set seed for reproducibility
-set.seed(1)
+set.seed(123)
 
 # Number of observations per group
-n <- 100
+n <- 1000
 
 # Means of each group
 mean_group1 <- 5
@@ -26,13 +27,16 @@ df <- data.frame(
   group = factor(rep(c("Group 1", "Group 2", "Group 3"), each = n))
 )
 
+# Visualise the data.
+ggplot(data = df, aes(x = group, y = value, fill = group)) +
+  geom_boxplot()
+
 # Standard One-ANOVA analysis using base R 
 res <- aov(value ~ group, data = df)
 res %>%
   report()
 
 # Get the means of each group form the model
-estimate_means(res)
-# Contrast the grtoup means from model using bonferroni correction.
-estimate_contrasts(res, p_adjust = "bonferroni")
-                      
+means <- estimate_means(res)
+# Contrast the group means from model using bonferroni correction method.
+constrasts <- estimate_contrasts(res, by = "group", p_adjust = "bonferroni")
