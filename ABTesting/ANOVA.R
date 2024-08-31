@@ -37,6 +37,8 @@ res %>%
   report()
 
 # Get the means of each group form the model
-means <- estimate_means(res)
+means <- estimate_means(res, by = "group")
+
 # Contrast the group means from model using bonferroni correction method.
-constrasts <- estimate_contrasts(res, by = "group", p_adjust = "bonferroni")
+constrasts <- estimate_contrasts(res, contrast  = "group", p_adjust = "bonferroni")
+
